@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <h3>{{3.14159265359 | currency:"&euro;"}}</h3>
+      <input type="text" ng-model="saying" >
+      <h5>Lowercase: {{saying | lowercase}}</h5>
+      <h5>Uppercase: {{saying | uppercase}}</h5>
+      <h3>How many digits of pi do you want?
+      <select ng-model="digits">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+      </select>
+      </h3>
+      <h3>There you go! The first {{digits}} digits of pi!</h3>
+      <h3>{{ 3.14159265359 | number: digits }}</h3>
+    </div>
+    <div ng-controller="mycontroller">
+      <p>How much did your meal cost? <input type="text" ng-model="cost"></p>
+      <p>How much do you want to tip?</p>
+      <select ng-model="tip">
+        <option>10%</option>
+        <option>15%</option>
+        <option>20%</option>
+      </select>
+      <h3>Subtotal: {{cost | currency}}</h3>
+      <h3>Tip: {{cost * (useableTip()/100) | currency}}</h3>
+    </div>
+    <script type="text/javascript">
+      angular.module('myapp', [])
+        .controller('mycontroller', ['$scope', function($scope) {
+          $scope.useableTip = function() {
+            return parseInt($scope.tip)
+          }
+        }])
+    </script>
+  </body>
+</html>
