@@ -36,6 +36,7 @@
       <h3>Subtotal: {{cost | currency}}</h3>
       <h3>Tip: {{cost * (useableTip()/100) | currency}}</h3>
     </div>
+    <div>{{this}}</div>
     <script type="text/javascript">
       angular.module('myapp', [])
         .controller('mycontroller', ['$scope', function($scope) {

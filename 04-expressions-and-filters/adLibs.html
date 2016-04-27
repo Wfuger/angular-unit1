@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <label for="">Boy's Name</label>
+      <br>
+      <input type="text" ng-model="name" placeholder="Enter a boy's name...">
+      <br>
+      <label for="">Adjective</label>
+      <br>
+      <input type="text" ng-model="adjective" placeholder="Enter an adjective...">
+      <br>
+      <label for="">Plural Noun</label>
+      <br>
+      <input type="text" ng-model="pnoun1" placeholder="Enter a plural noun...">
+      <br>
+      <label for="">Plural Noun</label>
+      <br>
+      <input type="text" ng-model="pnoun2" placeholder="Enter a plural noun...">
+      <br>
+      <label for="">An insect, plural</label>
+      <br>
+      <input type="text" ng-model="insect" placeholder="Enter an insect, plural">
+      <br>
+      <label for="">Plural Noun</label>
+      <br>
+      <input type="text" ng-model="pnoun3" placeholder="Enter a plural noun...">
+      <br>
+      <label for="">A verb ending in "s"</label>
+      <br>
+      <input type="text" ng-model="verb" placeholder='Enter a verb ending in "s"...'>
+      <h3>Mad with the Libs</h3>
+      <h4>I'm in love with {{name | uppercase}}. He's so {{adjective | uppercase}}!</h4>
+      <h4>He has big flat {{pnoun1 | uppercase}}, and when our</h4>
+      <h4>{{pnoun2 | uppercase}} meet, I get {{insect | uppercase}} in my stomach.</h4>
+      <h4>I've fallen for him like a ton of {{pnoun3 | uppercase}}, and he</h4>
+      <h4>{{verb | uppercase}} me, too. But I think he's got</h4>
+      <h4>another girlfriend. What should I do?</h4>
+    </div>
+  </body>
+</html>
