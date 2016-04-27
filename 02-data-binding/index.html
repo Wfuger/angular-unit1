@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  </head>
+  <body>
+    <input type="text" placeholder="What is your name?" ng-model="name">
+    <h1>My name is: {{name}}</h1>
+    <select ng-model="dogsOrCats">
+      <option>dogs</option>
+      <option>cats</option>
+      <option>dogs and cats</option>
+      <option>neither</option>
+    </select>
+    <h3>I love {{dogsOrCats}} </h3>
+  </body>
+</html>
