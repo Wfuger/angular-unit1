@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title></title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
   </head>
-  <body>
-    
+  <body ng-controller="mycontroller">
+    <main ng-init="init()">
+      <div>
+      <ul ng-repeat="suit in suits">
+        <li>{{suit}}</li>
+      </ul>
+    </div>
+    <div>
+      <ul ng-repeat="number in numbers">
+        <li>{{number}}</li>
+      </ul>
+    </div>
+    </main>
+    <script>
+    angular.module('myApp', [])
+      .controller('mycontroller', ['$scope', function($scope) {
+        $scope.init = function() {
+          $scope.suits = ['&spades;', '&clubs;', '&hearts;', '&diams;']
+          $scope.numbers =  [1,2,3,4,9]
+        }
+      }]);
+    </script>
   </body>
 </html>
