@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+            <script type="text/javascript" src="app.js">
+            </script>
+  </head>
+  <body>
+    <div ng-controller="myFirstController">
+      <h1>My name is: {{name}}</h1>
+      <input type="text" name="name" placeholder="What is your name?" ng-model="name">
+    </div>
+    <div ng-controller="ExercisesController">
+      <h1 ng-bind="FavColor"></h1>
+      <h3 ng-bind="secondsInACentury | number"></h3>
+      <p ng-bind="rightNow | date: 'fullDate'"></p>
+    </div>
+
+  </body>
+</html>
