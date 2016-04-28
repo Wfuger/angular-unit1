@@ -50,31 +50,31 @@
                 </div>
                 <div class="row">
                   <h1>Word Reverser</h1>
-                  <input type="text" ng-model="reverseMe">
+                  <input type="text" ng-model="view.reverseMe">
                   <p>Your word is:
-                      {{reverseMe}}</p>
-                  <button class="btn btn-primary" ng-click="backwards(reverseMe)">Reverse</button>
+                      {{view.reverseMe}}</p>
+                  <button class="btn btn-primary" ng-click="backwards(view.reverseMe)">Reverse</button>
                 </div>
                 <div class="ping" ng-controller="pingPong">
                   <div class="row">
-                    <div ng-class="{winner: p1winner, loser: p2winner}" class="playa" ng-click="point('p1')">
+                    <div ng-class="{winner: game.p1winner, loser: game.p2winner}" class="playa" ng-click="point('p1')">
                         <h2>Player 1</h2>
-                        <h4 ng-show="p1wins">Wins: {{p1wins}}</h4>
+                        <h4 ng-show="game.p1wins">Wins: {{game.p1wins}}</h4>
                         <span class="score">
-                            <h1 ng-bind="p1Score"></h1>
+                            <h1 ng-bind="game.p1Score"></h1>
                         </span>
-                        <p ng-show="serve">Serving</p>
+                        <p ng-show="game.serve">Serving</p>
                     </div>
-                    <div ng-class="{winner: p2winner, loser: p1winner}" class="playa" ng-click="point('p2')">
+                    <div ng-class="{winner: game.p2winner, loser: game.p1winner}" class="playa" ng-click="point('p2')">
                         <h2>Player 2</h2>
-                        <h4 ng-show="p2wins">Wins: {{p2wins}}</h4>
+                        <h4 ng-show="game.p2wins">Wins: {{game.p2wins}}</h4>
                         <span class="score">
-                            <h1 ng-bind="p2Score"></h1>
+                            <h1 ng-bind="game.p2Score"></h1>
                         </span>
-                        <p ng-hide="serve">Serving</p>
+                        <p ng-hide="game.serve">Serving</p>
                     </div>
                   </div>
-                  <button ng-disabled="!p1winner && !p2winner" class="btn btn-primary" ng-click="reset()">Reset</button>
+                  <button ng-disabled="!game.p1winner && !game.p2winner" class="btn btn-primary" ng-click="reset()">Reset</button>
                 </div>
                 <div class="row" ng-controller="colorControl" >
                   <div class="box" ng-style="myStyle" ng-mouseenter="myStyle={'background-color':randomColor()}"></div>
@@ -116,6 +116,20 @@
                   <div class="row">
                     <label>Search <i class="fa fa-search" aria-hidden="true"></i>
                     </label><input type="text" ng-model="search" >
+                  </div>
+                  <div class="row">
+                    <table class="table">
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                      </tr>
+                      <tr ng-repeat="contact in contacts">
+                        <th ng-bind="contact.name"></th>
+                        <th ng-bind="contact.email"></th>
+                        <th ng-bind="contact.phone"></th>
+                      </tr>
+                    </table>
                   </div>
                 </div>
             </div>

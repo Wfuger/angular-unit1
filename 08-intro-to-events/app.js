@@ -6,40 +6,41 @@ angular.module('myApp', [])
       $scope.view.number = Math.floor(Math.random() * 10) + 1;
     }
     $scope.backwards = function(word){
-      return $scope.reverseMe = word.split('').reverse().join('');
+      return $scope.view.reverseMe = word.split('').reverse().join('');
     }
   }])
   .controller('pingPong', ['$scope', function($scope) {
-    $scope.clicks = 0;
-    $scope.p1Score = 0;
-    $scope.p2Score = 0;
-    $scope.p1wins = 0;
-    $scope.p2wins = 0;
-    $scope.serve = false;
+    $scope.game = {};
+    $scope.game.clicks = 0;
+    $scope.game.p1Score = 0;
+    $scope.game.p2Score = 0;
+    $scope.game.p1wins = 0;
+    $scope.game.p2wins = 0;
+    $scope.game.serve = false;
     $scope.point = function(player) {
-      if($scope.p1winner || $scope.p2winner) { return; }
+      if($scope.game.p1winner || $scope.game.p2winner) { return; }
       else {
-        player === 'p1' ? $scope.p1Score++ : $scope.p2Score++;
-        $scope.clicks++;
-        if( $scope.clicks % 2 === 0 )
-          $scope.serve === false ? $scope.serve = true : $scope.serve = false;
-        if( $scope.p1Score === 11 || $scope.p2Score === 11 )
+        player === 'p1' ? $scope.game.p1Score++ : $scope.game.p2Score++;
+        $scope.game.clicks++;
+        if( $scope.game.clicks % 2 === 0 )
+          $scope.game.serve === false ? $scope.game.serve = true : $scope.game.serve = false;
+        if( $scope.game.p1Score === 11 || $scope.game.p2Score === 11 )
           if(player === 'p1'){
-           $scope.p1winner = true;
-           $scope.p1wins++;
+           $scope.game.p1winner = true;
+           $scope.game.p1wins++;
           } else {
-           $scope.p2winner = true;
-           $scope.p2wins++;
+           $scope.game.p2winner = true;
+           $scope.game.p2wins++;
           }
         }
       }
     $scope.reset = function() {
-      $scope.clicks = 0;
-      $scope.p1Score = 0;
-      $scope.p2Score = 0;
-      $scope.serve = false;
-      $scope.p1winner = false;
-      $scope.p2winner = false;
+      $scope.game.clicks = 0;
+      $scope.game.p1Score = 0;
+      $scope.game.p2Score = 0;
+      $scope.game.serve = false;
+      $scope.game.p1winner = false;
+      $scope.game.p2winner = false;
     }
   }])
   .controller('colorControl', ['$scope', '$timeout', '$log', function($scope, $timeout, $log){
@@ -67,7 +68,6 @@ angular.module('myApp', [])
        z1 = z.substring(0,y),
        color = "#" + z1 + x;
       $scope.colors.push(color)
-      console.log($scope.colors);
       return $scope.color = color;
     }
   }])
@@ -83,10 +83,10 @@ angular.module('myApp', [])
   }])
   .controller('formControl', ['$scope', "$log", function($scope, $log){
     $scope.newContact = {};
-    $scope.contacts = {};
+    $scope.contacts = [];
     $scope.addContact = function() {
-      $scope.contacts += $scope.newContact;
+      $scope.contacts.push($scope.newContact);
       $scope.newContact = {};
-      $log.info($scope.contacts);
+      console.log($scope.contacts);
     }
   }])
