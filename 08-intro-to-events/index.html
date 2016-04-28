@@ -1,11 +1,124 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
-  </head>
-  <body>
-    
-  </body>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <style media="screen">
+            .ping {
+                color: white;
+                margin-top: 25px;
+                margin-bottom: 25px;
+                justify-content: center;
+            }
+            .playa {
+                float: left;
+                width: auto;
+                background-color: #4096c1;
+                margin-left: 25px;
+                width: 300px;
+                height: 300px;
+                text-align: center;
+            }
+            .playa h1 {
+                font-size: 9em;
+            }
+            .winner {
+                background-color: green;
+            }
+            .loser {
+                background-color: red;
+            }
+            .box {
+              width: 300px;
+              height: 300px;
+              border: 5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <main ng-controller="mainController">
+            <div class="container">
+                <div class="row">
+                  <h3>The number is:
+                      {{view.number}}</h3>
+                  <button class="btn btn-primary" ng-click="pickRandomNumber()">Do Ya Feel Lucky?...Punk</button>
+                </div>
+                <div class="row">
+                  <h1>Word Reverser</h1>
+                  <input type="text" ng-model="reverseMe">
+                  <p>Your word is:
+                      {{reverseMe}}</p>
+                  <button class="btn btn-primary" ng-click="backwards(reverseMe)">Reverse</button>
+                </div>
+                <div class="ping" ng-controller="pingPong">
+                  <div class="row">
+                    <div ng-class="{winner: p1winner, loser: p2winner}" class="playa" ng-click="point('p1')">
+                        <h2>Player 1</h2>
+                        <h4 ng-show="p1wins">Wins: {{p1wins}}</h4>
+                        <span class="score">
+                            <h1 ng-bind="p1Score"></h1>
+                        </span>
+                        <p ng-show="serve">Serving</p>
+                    </div>
+                    <div ng-class="{winner: p2winner, loser: p1winner}" class="playa" ng-click="point('p2')">
+                        <h2>Player 2</h2>
+                        <h4 ng-show="p2wins">Wins: {{p2wins}}</h4>
+                        <span class="score">
+                            <h1 ng-bind="p2Score"></h1>
+                        </span>
+                        <p ng-hide="serve">Serving</p>
+                    </div>
+                  </div>
+                  <button ng-disabled="!p1winner && !p2winner" class="btn btn-primary" ng-click="reset()">Reset</button>
+                </div>
+                <div class="row" ng-controller="colorControl" >
+                  <div class="box" ng-style="myStyle" ng-mouseenter="myStyle={'background-color':randomColor()}"></div>
+                  <button class="btn btn-primary" ng-click="myStyle={'background-color':replay()}">Replay</button>
+                </div>
+                <div class="row">
+                  <div ng-controller="addressForm">
+                    <label>Street 1</label><input type="text" ng-model="address.st1" >
+                    <label>Street 2</label><input type="text" ng-model="address.st2" >
+                    <label>City</label><input type="text" ng-model="address.city" >
+                    <label>State</label><input type="text" ng-model="address.state" >
+                    <label>Zipcode</label><input type="text" ng-model="address.zip" >
+                    <button ng-click="showMeh()" class='btn btn-primary' name="button">Show Meh</button>
+                    <table class="table" ng-show="show">
+                      <tr>
+                        <th>Street 1</th>
+                        <th>Street 2</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zipcode</th>
+                      </tr>
+                      <tr>
+                        <td ng-bind="showAddress.st1"></td>
+                        <td ng-bind="showAddress.st2"></td>
+                        <td ng-bind="showAddress.city"></td>
+                        <td ng-bind="showAddress.state"></td>
+                        <td ng-bind="showAddress.zip"></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div ng-controller="formControl">
+                  <div class="row">
+                    <label>Name</label><input type="text" ng-model="newContact.name" >
+                    <label>Email</label><input type="text" ng-model="newContact.email" >
+                    <label>Phone</label><input type="text" ng-model="newContact.phone" >
+                    <button class="btn btn-primary" ng-click="addContact()">Add Contact</button>
+                  </div>
+                  <div class="row">
+                    <label>Search <i class="fa fa-search" aria-hidden="true"></i>
+                    </label><input type="text" ng-model="search" >
+                  </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
