@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body ng-controller="myController">
+        <div class="container">
+            <div class="row">
+                <form name="firstForm" ng-submit="submit()" novalidate>
+                    <div class="form-group" ng-class="{'has-error': firstForm.username.$invalid, 'has-success': firstForm.username.$valid}">
+                      <label for="username">Username</label>
+                      <input type="text" name="username" class="form-control" ng-minlength="3" ng-model="form.username" placeholder="Username">
+                      <span ng-show="form.username.$invalid">Username is invalid</span>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': firstForm.email.$invalid, 'has-success': firstForm.email.$valid}">
+                        <label for="email">Email address</label>
+                        <input type="email" name="email" class="form-control" ng-model="form.email" placeholder="Email">
+                        <span ng-show="form.email.$invalid">Email is invalid</span>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': firstForm.password.$dirty && firstForm.password.$invalid, 'has-success': firstForm.password.$dirty && firstForm.password.$valid}">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" ng-minlength="6" ng-model="form.password" placeholder="Password">
+                        <span ng-show="form.password.$invalid">Password is invalid</span>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': firstForm.zip.$invalid, 'has-success': firstForm.zip.$valid}">
+                        <label for="zip">Zipcode</label>
+                        <input type="text" name="zip" class="form-control" ng-minlength="5" ng-maxlength="5" ng-model="zipidy" placeholder="Zipcode">
+                        <span ng-show="form.zip.$invalid">Zipcode is invalid</span>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
