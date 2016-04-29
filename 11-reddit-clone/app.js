@@ -8,10 +8,14 @@ angular.module('RedditClone', [])
     $scope.newPost = function() { return $scope.view.createPost = !$scope.view.createPost; }
     $scope.post = function() {
       $scope.posts.push($scope.newPost);
+      $scope.newPost.votes = 0;
       return $scope.newPost = {};
       // return $scope.view.createPost = !$scope.view.createPost;
     }
     $scope.sorter = function(b) {
       return $scope.view.by = b;
+    }
+    $scope.vote = function(vote, i) {
+      return vote === 'up' ? $scope.posts[i].votes++ : $scope.posts[i].votes--;
     }
   }])
