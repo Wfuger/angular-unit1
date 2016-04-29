@@ -33,28 +33,24 @@
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search" ng-model="view.search">
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By
-                                {{ sortPosts.by | lowercase }}
+                                {{ view.by }}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#" ng-model="sortPosts.by">Votes</a>
+                                    <a href="#" ng-click="sorter('votes')">Votes</a>
                                 </li>
                                 <li>
-                                    <a href="#" ng-model="sortPosts.by">Date</a>
+                                    <a href="#" ng-click="sorter('date')">Date</a>
                                 </li>
                                 <li>
-                                    <a href="#" ng-model="sortPosts.by">Title</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="#">Separated link</a>
+                                    <a href="#" ng-click="sorter('title')">Title</a>
                                 </li>
                             </ul>
                         </li>
@@ -62,26 +58,32 @@
                 </div>
             </div>
         </nav>
-        <main>
-            <div class="container">
-                <form ng-show="view.createPost" class="form">
-                    <div class="form-group">
-                        <label for="exampleInputName2">Title</label>
-                        <input type="text" class="form-control" ng-model="newPost.title">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail2">Author</label>
-                        <input type="text" class="form-control" ng-model="newPost.author">
-                    </div>
-                    <button type="submit" class="btn btn-default" ng-click="post()">Submit Post</button>
-                </form>
-                <div class="row well" ng-repeat="post in posts | orderBy : sortPosts.by">
-                    <img src="{{post.url}}"/>
-                    <h1 ng-bind="post.title"></h1>
-                    <span></span>
+        <main class="container">
+            <form ng-show="view.createPost" class="form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input name="title" type="text" class="form-control" ng-model="newPost.title">
                 </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input name="author" type="text" class="form-control" ng-model="newPost.author">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input name="image" type="text" class="form-control" ng-model="newPost.image">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input name="description" type="text" class="form-control" ng-model="newPost.description">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="post()">Submit Post</button>
+            </form>
+            <div class="row well" ng-repeat="post in posts | orderBy : view.by | filter : view.search">
+                <!-- <img src="{{post.url}}"/> -->
+                <h3 ng-bind="post.title"></h3>
+                <p ng-bind="post.author"></p>
+                <span></span>
             </div>
         </main>
-
     </body>
 </html>
