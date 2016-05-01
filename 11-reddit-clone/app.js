@@ -16,6 +16,9 @@ angular.module('RedditClone', [])
       $scope.posts.push($scope.newPost);
       $scope.newPost = {};
     }
+    $scope.addComment = function(post) {
+      $scope.post.showTheComments = !$scope.post.showTheComments;
+    }
     $scope.sorter = function(b) {
       b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
       return $scope.view.by = b;
