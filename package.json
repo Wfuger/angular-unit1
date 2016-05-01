@@ -1,0 +1,22 @@
+{
+  "name": "angular-unit1",
+  "version": "1.0.0",
+  "description": "Questions # 01 1. Angular is the most widely used front-end framework, employers want Angular developers. 1.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wfuger/angular-unit1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wfuger/angular-unit1/issues"
+  },
+  "homepage": "https://github.com/Wfuger/angular-unit1#readme",
+  "dependencies": {
+    "moment": "^2.13.0"
+  }
+}
