@@ -6,17 +6,19 @@ angular.module('RedditClone', [])
     $scope.newPost = {};
     $scope.view.createPost = false;
     $scope.view.by = 'votes';
+    $scope.view.reverse = true;
     $scope.showPost = function() { $scope.view.createPost = !$scope.view.createPost; }
     $scope.post = function() {
       $scope.newPost.votes = 0;
       $scope.newPost.date = moment().calendar();
-      $scope.newPost.comments = ['poop'];
+      // $scope.newPost.comments = ['poop'];
       $scope.newPost.showTheComments = false;
+      $scope.view.reverse = true;
       $scope.posts.push($scope.newPost);
       $scope.newPost = {};
     }
     $scope.sorter = function(b) {
-      if(b === 'votes') $scope.view.reverse = true;
+      b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
       return $scope.view.by = b;
     }
     $scope.vote = function(vote, post) {
