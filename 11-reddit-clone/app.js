@@ -10,14 +10,14 @@ angular.module('RedditClone', [])
     $scope.post = function() {
       $scope.newPost.votes = 0;
       $scope.newPost.date = moment().calendar();
-      // $scope.newPost.comments = ['poop'];
       $scope.newPost.showTheComments = false;
+      $scope.newPost.addAComment = false;
       $scope.view.reverse = true;
       $scope.posts.push($scope.newPost);
       $scope.newPost = {};
     }
     $scope.addComment = function(post) {
-      $scope.post.showTheComments = !$scope.post.showTheComments;
+      $scope.post.addAComment = !$scope.post.addAComment;
     }
     $scope.sorter = function(b) {
       b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
@@ -43,7 +43,8 @@ angular.module('RedditClone', [])
         image: 'http://www.fillmurray.com/200/302',
         description: 'The coolest man alive',
         date: moment().calendar(),
-        comments: []
+        comments: [],
+        addAComment: false
       },
       {
         title: 'More Bill Fucking Murray',
@@ -52,7 +53,8 @@ angular.module('RedditClone', [])
         image: 'http://www.fillmurray.com/200/303',
         description: 'The coolest mother fucking man alive',
         date: moment().calendar(),
-        comments: []
+        comments: ['poop', 'more poop', 'pooop  pooop pooop'],
+        addAComment: false
       }
     ]
     $scope.showComments = function(post) {
