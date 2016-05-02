@@ -27,7 +27,8 @@ angular.module('RedditClone', [])
         $scope.comment = function(comment, post) {
             post.comments.push(comment)
             $scope.makeNewComment = {}
-            $scope.newPost.newComment = false;
+            // $scope.newPost.newComment = false;
+            post.newComment = true;
         }
         $scope.sorter = function(b) {
             b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
