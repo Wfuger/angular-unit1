@@ -1,69 +1,77 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var moment = require('moment');
 angular.module('RedditClone', [])
-  .controller('mainController', ['$scope', function($scope){
-    $scope.view = {};
-    $scope.newPost = {};
-    $scope.view.createPost = false;
-    $scope.view.by = 'votes';
-    $scope.view.reverse = true;
-    $scope.showPost = function() { $scope.view.createPost = !$scope.view.createPost; }
-    $scope.post = function() {
-      $scope.newPost.votes = 0;
-      $scope.newPost.date = moment().calendar();
-      $scope.newPost.showTheComments = false;
-      $scope.newPost.newComment = false;
-      $scope.newPost.comments = [];
-      $scope.view.reverse = true;
-      $scope.posts.push($scope.newPost);
-      $scope.newPost = {};
-    }
-    $scope.addComment = function(post) {
-      post.newComment = ! post.newComment;
-    }
-    $scope.sorter = function(b) {
-      b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
-      return $scope.view.by = b;
-    }
-    $scope.vote = function(vote, post) {
-      return vote === 'up' ? post.votes++ : post.votes--;
-    }
-    $scope.posts = [
-      {
-        title: 'Unique New York',
-        votes: 0,
-        author: 'Yo momma',
-        image: 'http://www.fillmurray.com/200/300',
-        description: '',
-        date: moment().calendar(),
-        comments: [],
-        newComment: true
-      },
-      {
-        title: 'Bill Fucking Murray',
-        votes: 10,
-        author: 'That One Guy',
-        image: 'http://www.fillmurray.com/200/302',
-        description: 'Is that Bill Murray?  Golf course it is.',
-        date: moment().calendar(),
-        comments: [],
-        newComment: true
-      },
-      {
-        title: 'More Bill Fucking Murray',
-        votes: 5,
-        author: 'Some Dude',
-        image: 'http://www.fillmurray.com/200/303',
-        description: 'The coolest man alive',
-        date: moment().calendar(),
-        comments: ['comments 1', 'comment 2', 'comment 3'],
-        newComment: true
-      }
-    ]
-    $scope.showComments = function(post) {
-      post.showTheComments = !post.showTheComments;
-    }
-  }])
+    .controller('mainController', ['$scope', function($scope) {
+        $scope.view = {};
+        $scope.newPost = {};
+        $scope.makeNewComment = {};
+        $scope.view.createPost = false;
+        $scope.view.by = 'votes';
+        $scope.view.reverse = true;
+        $scope.showPost = function() {
+            $scope.view.createPost = !$scope.view.createPost;
+        }
+        $scope.post = function() {
+            $scope.newPost.votes = 0;
+            $scope.newPost.date = moment().calendar();
+            $scope.newPost.showTheComments = false;
+            $scope.newPost.newComment = false;
+            $scope.newPost.comments = [];
+            $scope.view.reverse = true;
+            $scope.posts.push($scope.newPost);
+            $scope.newPost = {};
+        }
+        $scope.addComment = function(post) {
+            post.newComment = !post.newComment;
+        }
+        $scope.comment = function(comment, post) {
+            post.comments.push(comment)
+            $scope.makeNewComment = {}
+            $scope.newPost.newComment = false;
+        }
+        $scope.sorter = function(b) {
+            b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
+            return $scope.view.by = b;
+        }
+        $scope.vote = function(vote, post) {
+            return vote === 'up' ? post.votes++ : post.votes--;
+        }
+        $scope.posts = [{
+            title: 'Unique New York',
+            votes: 0,
+            author: 'Yo momma',
+            image: 'http://www.fillmurray.com/200/300',
+            description: '',
+            date: moment().calendar(),
+            comments: [],
+            newComment: true
+        }, {
+            title: 'Bill Fucking Murray',
+            votes: 10,
+            author: 'That One Guy',
+            image: 'http://www.fillmurray.com/200/302',
+            description: 'Is that Bill Murray?  Golf course it is.',
+            date: moment().calendar(),
+            comments: [],
+            newComment: true
+        }, {
+            title: 'More Bill Fucking Murray',
+            votes: 5,
+            author: 'Some Dude',
+            image: 'http://www.fillmurray.com/200/303',
+            description: 'The coolest man alive',
+            date: moment().calendar(),
+            comments: [{
+                author: 'Yo momma',
+                comment: 'comment 1'
+              }
+            ],
+            newComment: true
+        }]
+        $scope.showComments = function(post) {
+            post.showTheComments = !post.showTheComments;
+        }
+    }])
 
 },{"moment":2}],2:[function(require,module,exports){
 //! moment.js
