@@ -11,13 +11,14 @@ angular.module('RedditClone', [])
       $scope.newPost.votes = 0;
       $scope.newPost.date = moment().calendar();
       $scope.newPost.showTheComments = false;
-      $scope.newPost.addAComment = false;
+      $scope.newPost.newComment = false;
+      $scope.newPost.comments = [];
       $scope.view.reverse = true;
       $scope.posts.push($scope.newPost);
       $scope.newPost = {};
     }
     $scope.addComment = function(post) {
-      $scope.post.addAComment = !$scope.post.addAComment;
+      post.newComment = ! post.newComment;
     }
     $scope.sorter = function(b) {
       b === 'votes' ? $scope.view.reverse = true : $scope.view.reverse = false;
@@ -34,27 +35,28 @@ angular.module('RedditClone', [])
         image: 'http://www.fillmurray.com/200/300',
         description: '',
         date: moment().calendar(),
-        comments: []
+        comments: [],
+        newComment: true
       },
       {
         title: 'Bill Fucking Murray',
         votes: 10,
         author: 'That One Guy',
         image: 'http://www.fillmurray.com/200/302',
-        description: 'The coolest man alive',
+        description: 'Is that Bill Murray?  Golf course it is.',
         date: moment().calendar(),
         comments: [],
-        addAComment: false
+        newComment: true
       },
       {
         title: 'More Bill Fucking Murray',
         votes: 5,
         author: 'Some Dude',
         image: 'http://www.fillmurray.com/200/303',
-        description: 'The coolest mother fucking man alive',
+        description: 'The coolest man alive',
         date: moment().calendar(),
-        comments: ['poop', 'more poop', 'pooop  pooop pooop'],
-        addAComment: false
+        comments: ['comments 1', 'comment 2', 'comment 3'],
+        newComment: true
       }
     ]
     $scope.showComments = function(post) {
