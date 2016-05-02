@@ -44,7 +44,8 @@ angular.module('RedditClone', [])
             description: '',
             date: moment().calendar(),
             comments: [],
-            newComment: true
+            newComment: true,
+            showTheComments: false
         }, {
             title: 'Bill Fucking Murray',
             votes: 10,
@@ -53,7 +54,8 @@ angular.module('RedditClone', [])
             description: 'Is that Bill Murray?  Golf course it is.',
             date: moment().calendar(),
             comments: [],
-            newComment: true
+            newComment: true,
+            showTheComments: false
         }, {
             title: 'More Bill Fucking Murray',
             votes: 5,
@@ -66,7 +68,8 @@ angular.module('RedditClone', [])
                 comment: 'comment 1'
               }
             ],
-            newComment: true
+            newComment: true,
+            showTheComments: false
         }]
         $scope.showComments = function(post) {
             post.showTheComments = !post.showTheComments;

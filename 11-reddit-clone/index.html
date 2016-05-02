@@ -149,7 +149,7 @@
                                     |
                                     <span ng-click="addComment(post)">Add A Comment</span>
                                 </p>
-                                <div ng-repeat="comment in post.comments" class="row">
+                                <div ng-show="post.showTheComments" ng-repeat="comment in post.comments" class="row">
                                   <p>
                                     Author: {{comment.author}}
                                     comment: {{comment.comment}}
