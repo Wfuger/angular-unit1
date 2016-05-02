@@ -14,7 +14,7 @@ angular.module('RedditClone', [])
             $scope.newPost.votes = 0;
             $scope.newPost.date = moment().calendar();
             $scope.newPost.showTheComments = false;
-            $scope.newPost.newComment = false;
+            $scope.newPost.newComment = true;
             $scope.newPost.comments = [];
             $scope.view.reverse = true;
             $scope.posts.push($scope.newPost);
@@ -24,9 +24,8 @@ angular.module('RedditClone', [])
             post.newComment = !post.newComment;
         }
         $scope.comment = function(comment, post) {
-            post.comments.push(comment)
-            $scope.makeNewComment = {}
-            // $scope.newPost.newComment = false;
+            post.comments.push(comment);
+            $scope.makeNewComment = {};
             post.newComment = true;
         }
         $scope.sorter = function(b) {
@@ -47,7 +46,7 @@ angular.module('RedditClone', [])
             newComment: true,
             showTheComments: false
         }, {
-            title: 'Bill Fucking Murray',
+            title: 'Bill Freaking Murray',
             votes: 10,
             author: 'That One Guy',
             image: 'http://www.fillmurray.com/200/302',
@@ -57,7 +56,7 @@ angular.module('RedditClone', [])
             newComment: true,
             showTheComments: false
         }, {
-            title: 'More Bill Fucking Murray',
+            title: 'More Bill Effing Murray',
             votes: 5,
             author: 'Some Dude',
             image: 'http://www.fillmurray.com/200/303',
