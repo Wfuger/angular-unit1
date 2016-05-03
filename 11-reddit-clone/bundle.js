@@ -3,7 +3,6 @@ var moment = require('moment');
 angular.module('RedditClone', [])
     .controller('mainController', ['$scope', function($scope) {
         $scope.view = {};
-        $scope.newPost = {};
         $scope.makeNewComment = {};
         $scope.view.createPost = false;
         $scope.view.by = 'votes';
